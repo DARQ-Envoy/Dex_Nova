@@ -8,12 +8,12 @@ const app = express();
 
 // config
 if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config({ path: 'backend/config/config.env' });
+    require('dotenv').config({ path: path.join(__dirname, 'config/config.env') });
 }
 
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 app.use(fileUpload());
 
 const user = require('./routes/userRoute');
@@ -39,5 +39,13 @@ if (process.env.NODE_ENV === 'production') {
         res.send('Server is Running! 🚀');
     });
 }
+
+app.use((err, req, res, next) => {
+    const statusCode = err.statusCode || 500;
+    res.status(statusCode).json({
+        success: false,
+        message: err.message || 'Internal Server Error',
+    });
+});
 
 module.exports = app;
