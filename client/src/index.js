@@ -6,6 +6,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 import { SnackbarProvider } from 'notistack';
+import { WalletProvider } from './wallet/WalletContext';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,7 +19,9 @@ ReactDOM.render(
         }}
       >
         <Router>
-          <App />
+          <WalletProvider>
+            <App />
+          </WalletProvider>
         </Router>
       </SnackbarProvider>
     </Provider>

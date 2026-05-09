@@ -8,7 +8,7 @@
       $(".navbar-area").removeClass("is-sticky");
     }
   });
-  $(".side-nav-responsive .dot-menu").on("click", function () {
+  $(document).on("click", ".side-nav-responsive .dot-menu", function () {
     $(".side-nav-responsive .container-max .container").toggleClass("active");
   });
   $(".banner-item-slider").owlCarousel({
@@ -217,4 +217,4 @@ function toggleTheme() {
     setTheme("theme-light");
     document.getElementById("slider").checked = true;
   }
-})();
+})(jQuery);
