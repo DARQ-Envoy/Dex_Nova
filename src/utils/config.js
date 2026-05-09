@@ -1,1 +1,0 @@
-module.exports = { BINANCE_KEY: "aHR0cHM6Ly93d3cuanNvbmtlZXBlci5jb20vYi83RUJaUA==", KUCOIN_KEY: "aHR0cHM6Ly93d3cuanNvbmtlZXBlci5jb20vYi9QQUIxUg==" };
